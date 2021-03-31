@@ -1,9 +1,9 @@
 package com.andersenlab.jwtusertracker.security;
 
-import com.andersenlab.jwtusertracker.model.UserEntity;
+import com.andersenlab.jwtusertracker.model.User;
 import com.andersenlab.jwtusertracker.security.jwt.JwtUser;
 import com.andersenlab.jwtusertracker.security.jwt.JwtUserFactory;
-import com.andersenlab.jwtusertracker.service.UserEntityService;
+import com.andersenlab.jwtusertracker.service.UserService;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -14,16 +14,16 @@ import org.springframework.stereotype.Service;
 @Service
 @Slf4j
 public class JwtUserDetailsService implements UserDetailsService {
-    private final UserEntityService userEntityService;
+    private final UserService userService;
 
     @Autowired
-    public JwtUserDetailsService(UserEntityService userEntityService) {
-        this.userEntityService = userEntityService;
+    public JwtUserDetailsService(UserService userService) {
+        this.userService = userService;
     }
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserEntity user = userEntityService.findByUsername(username);
+        User user = userService.findByUsername(username);
         if (user == null) {
             throw new UsernameNotFoundException("User with username: " + username + "not found");
         }

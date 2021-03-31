@@ -2,7 +2,7 @@ package com.andersenlab.jwtusertracker.security.jwt;
 
 import com.andersenlab.jwtusertracker.model.Role;
 import com.andersenlab.jwtusertracker.model.Status;
-import com.andersenlab.jwtusertracker.model.UserEntity;
+import com.andersenlab.jwtusertracker.model.User;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 
@@ -14,7 +14,7 @@ public final class JwtUserFactory {
     public JwtUserFactory() {
     }
 
-    public static JwtUser create(UserEntity user) {
+    public static JwtUser create(User user) {
         return new JwtUser(
                 user.getId(),
                 user.getUsername(),

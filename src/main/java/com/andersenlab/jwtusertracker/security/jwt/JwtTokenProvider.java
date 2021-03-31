@@ -1,6 +1,7 @@
 package com.andersenlab.jwtusertracker.security.jwt;
 
 import com.andersenlab.jwtusertracker.model.Role;
+import com.andersenlab.jwtusertracker.security.JwtUserDetailsService;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jws;
 import io.jsonwebtoken.JwtException;
@@ -34,7 +35,7 @@ public class JwtTokenProvider {
 
 
     @Autowired
-    private UserDetailsService userDetailsService;
+    private JwtUserDetailsService userDetailsService;
 
     @Bean
     public BCryptPasswordEncoder passwordEncoder() {
